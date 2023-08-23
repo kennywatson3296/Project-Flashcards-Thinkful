@@ -16,19 +16,30 @@ import EditCard from "./EditCard"
     const handleDelete = (event)=>{
         
         if(window.confirm("Are you sure you want to delete this deck?")){
-        deleteDeck(deck.id)}
+        deleteDeck(deck.id)
+    }
         history.push('/')
         
     }
     useEffect(()=>{
         readDeck(deckId)
-        .then(setDeck)
+        .then((res) => {
+          setDeck(res)    
+        })
         .catch(console.err)
-    }, []) 
+    }, [])
    
 if (deck.id){
     return( <div><Switch>
         <Route exact path={`${url}`}>
+    <nav aria-label="breadcrumb">
+    <ol className="breadcrumb">
+      <li className="breadcrumb-item">
+        <Link to={"/"} className="btn btn-link">Go Home</Link>
+      </li>
+      <li className="breadcrumb-item active">{deck.name}</li>
+    </ol>
+  </nav>
         <div className="card w-75 justify-content-center" >
           <div className="card-body">
           <h5 className="card-title">{deck.name}</h5>
@@ -45,9 +56,9 @@ if (deck.id){
         {deck.cards.map((card)=> <CardList deck={deck} card={card} key={card.id}/>)}
       </Route>
        <Route  path={`${url}/edit`}><DeckEdit deck={deck}/></Route>
-       <Route  path={`${url}/cards/new`}><CreateCard deck={deck}/></Route>
+       <Route  path={`${url}/cards/new`}><CreateCard deck={deck} setDeck={setDeck}/></Route>
        <Route path={`${url}/study`}><Study deck={deck}/></Route>
-       <Route path={`${url}/cards/:cardId/edit`}><EditCard deck={deck}/></Route>
+       <Route path={`${url}/cards/:cardId/edit`}><EditCard deck={deck} setDeck={setDeck}/></Route>
        <Route><NotFound/></Route>
        
        </Switch>

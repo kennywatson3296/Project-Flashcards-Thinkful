@@ -15,7 +15,7 @@ const [decks, setDecks] = useState([])
             <Link to="decks/new">
                 <button type="button" className="btn btn-primary">Create Deck</button>
             </Link>
-            {decks.map((deck)=> <DeckView deck={deck} key={deck.id}/>)}
+            {decks.map((deck)=> <DeckView deck={deck} setDecks={setDecks} key={deck.id}/>)}
         </div>
     )
 }else if (decks.length == 0) {

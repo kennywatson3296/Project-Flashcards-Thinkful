@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react"
 import { deleteDeck } from "../utils/api"
 import {Link} from "react-router-dom"
-function DeckView({deck}){
+function DeckView(){
 
     const handleDelete = (event)=>{
         
         if(window.confirm("Are you sure you want to delete this deck?")){
-        deleteDeck(deck.id)}
+        deleteDeck(deck.id)
+        .then(window.location.reload())}
         
     }
     return (

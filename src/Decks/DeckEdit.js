@@ -4,6 +4,7 @@ import DeckList from "./DeckList"
 import {Link, useParams, useHistory} from "react-router-dom"
 
 function DeckEdit({deck}){
+  const {deckId} = useParams()
     const history = useHistory()
 const [formData, setFormData] = useState({...deck})
 const handleChange=({target})=>{
@@ -13,7 +14,7 @@ setFormData({
 })
 }
 const handleClick = (event) =>{
-    history.push('/')
+    history.push(`/decks/${deckId}`)
 }
 const handleSubmit = ()=>{
      updateDeck(formData)

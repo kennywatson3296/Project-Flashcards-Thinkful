@@ -6,9 +6,10 @@ function CardList({card}){
 const {url} = useRouteMatch()
 const {cardId} = useParams()
 const handleDelete = (event)=>{
-    window.confirm("Are you sure you want to delete this card?")
+    if(window.confirm("Are you sure you want to delete this card?")){
 deleteCard(card.id)
-window.location.reload()
+.then((res)=>{console.log(res)})
+.then(window.location.reload())}
 
 }
     return (

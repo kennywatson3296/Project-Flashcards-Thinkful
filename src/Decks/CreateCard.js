@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import {Link, useParams, useHistory} from "react-router-dom"
 import { createCard, readDeck} from "../utils/api"
-function CreateCard({deck}){
+function CreateCard({deck, setDeck}){
     const history = useHistory()
     const deckId = deck.id
    
@@ -20,14 +20,15 @@ const handleChange = ({target})=>{
     })
 }
 const handleClick = (event) =>{
-    history.push('/')
+    history.push(`/decks/${deckId}`)
 }
 const handleSubmit = ()=>{
      createCard(deckId, formData)
-     .then(console.log)
-     .then(readDeck(deckId))
-     .then(setFormData({...initialFormState}))
-     
+     .then((res)=>{console.log(res)
+    const cardIndex = deck.cards.length
+     deck.cards[cardIndex] = res
+    setDeck(deck)})
+     setFormData({...initialFormState})
    
 }
 if(deck.id){

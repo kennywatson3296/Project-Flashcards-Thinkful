@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import {Link, useParams, useHistory} from "react-router-dom"
 import { createCard, readDeck} from "../utils/api"
+import CardForm from "./CardForm"
 function CreateCard({deck, setDeck}){
     const history = useHistory()
     const deckId = deck.id
@@ -12,13 +13,13 @@ function CreateCard({deck, setDeck}){
     }
     
     const [formData, setFormData] = useState({...initialFormState})
-const handleChange = ({target})=>{
-    const value = target.value
-    setFormData({
-        ...formData,
-        [target.name]: value,
-    })
-}
+    const handleChange = ({target})=>{
+        const value = target.value
+        setFormData({
+            ...formData,
+            [target.name]: value,
+        })
+    }
 const handleClick = (event) =>{
     history.push(`/decks/${deckId}`)
 }
@@ -43,10 +44,7 @@ if(deck.id){
       <li className="breadcrumb-item active">Add Card</li>
     </ol>
   </nav>
-  <label htmlFor="front">Front</label>
-        <textarea name="front" onChange={handleChange} value={formData.front} placeholder="Front side of card"/>
-<label htmlFor="back">Back</label>
-        <textarea name="back" onChange={handleChange} value={formData.back} placeholder="Back side of card"/>
+ <CardForm handleChange={handleChange} data={formData} />
         <button type="button" className="btn-secondary" onClick={handleClick}>Done</button>
         <button type="submit" className="btn-primary" onClick={handleSubmit}>Save</button>
 

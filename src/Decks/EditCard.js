@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react"
 import {Link, useParams, useHistory} from "react-router-dom"
 import { readCard, readDeck, updateCard} from "../utils/api"
+import CardForm from "./CardForm"
 function EditCard({deck, setDeck}){
     const history = useHistory()
     const deckId = deck.id
@@ -53,10 +54,7 @@ if(card.id == cardId){
       <li className="breadcrumb-item active">Edit Card </li>
     </ol>
   </nav>
-  <label htmlFor="front">Front</label>
-        <textarea name="front" onChange={handleChange} value={card.front}/>
-<label htmlFor="back">Back</label>
-        <textarea name="back" onChange={handleChange} value={card.back}/>
+  <CardForm handleChange={handleChange} data={card} />
         <button type="button" className="btn-secondary" onClick={handleClick}>Cancel</button>
         <button type="submit" className="btn-primary" onClick={handleSubmit}>Submit</button>
 

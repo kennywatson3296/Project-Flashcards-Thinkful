@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react"
 import { deleteDeck } from "../utils/api"
 import {Link} from "react-router-dom"
-function DeckView(){
+function DeckView({deck}){
 
     const handleDelete = (event)=>{
         

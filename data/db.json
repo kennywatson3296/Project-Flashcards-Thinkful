@@ -1,4 +1,40 @@
 {
-  "decks": [],
-  "cards": []
+  "decks": [
+    {
+      "name": "New Deck",
+      "description": "Create a new Deck",
+      "id": 1
+    },
+    {
+      "name": "Lets add a deck",
+      "description": "Add another deck",
+      "id": 2
+    }
+  ],
+  "cards": [
+    {
+      "front": "But why does the edit work",
+      "back": "But not the add",
+      "deckId": 1,
+      "id": 1
+    },
+    {
+      "front": "Another card",
+      "back": "Please add",
+      "deckId": 1,
+      "id": 2
+    },
+    {
+      "front": "Add a card",
+      "back": "Try now",
+      "deckId": 1,
+      "id": 3
+    },
+    {
+      "front": "Now we add a new card",
+      "back": "Because it's less silly",
+      "deckId": 1,
+      "id": 4
+    }
+  ]
 }
